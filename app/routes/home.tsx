@@ -3,7 +3,7 @@ import Sobre from '../../src/pages/sobre/Sobre';
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "New React Router App" },
+    { title: "Sobre" },
     { name: "description", content: "Welcome to React Router!" },
   ];
 }

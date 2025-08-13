@@ -2,29 +2,35 @@ import { createContext, useContext, useEffect, useMemo, useState } from "react";
 import { appConfig } from "@/src/services/event-extension.service";
 import type { IDataHeader, IAppConfig, INavbar } from "@/src/@types/appConfig";
 import type { IThemas } from "@/src/@types/themas";
-import type { IAppCompanyContext, Language } from "@/src/@types/appCompanyContext";
+import type { IAppCompanyContext, Language, Theme } from "@/src/@types/appCompanyContext";
 import { environment } from "@/src/environments/environment";
 
 const AppCompanyContext = createContext<IAppCompanyContext>({
+  eventId: '',
   themas: null,
   dataHeader: null,
   loading: true,
   lang: 'br',
   navbar: [],
+  themeMode: 'dark',
+  toggleTheme: () => {},
   setLang: () => {},
 });
 
 export function AppCompanyProvider({ children }: { children: React.ReactNode }) {
+  const [eventId, setEventId] = useState('');
   const [themas, setThemas] = useState<IThemas | null>(null);
   const [navbar, setNavbar] = useState<INavbar[] | []>([]);
   const [dataHeader, setDataHeader] = useState<IDataHeader | null>(null);
   const [lang, setLang] = useState<Language>("br");
+  const [themeMode, setThemeMode] = useState<Theme>("dark");
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchAppCompany = async () => {
       try {
         const result = await appConfig(environment.FRIENDLY_URL_EVENT);
+        setEventId(result.id);
         formatData(result);
       } catch (err) {
         console.error("Erro ao buscar app-company:", err);
@@ -35,6 +41,15 @@ export function AppCompanyProvider({ children }: { children: React.ReactNode }) 
 
     fetchAppCompany();
   }, []);
+
+  useEffect(() => {
+    document.documentElement.classList.remove("dark", "light");
+    document.documentElement.classList.add(themeMode);
+  }, [themeMode]);
+  
+  const toggleTheme = () => {
+    setThemeMode((prev) => (prev === "dark" ? "light" : "dark"));
+  };
 
   const formatData = (data: IAppConfig | null) => {
     if (data) {
@@ -85,13 +100,26 @@ export function AppCompanyProvider({ children }: { children: React.ReactNode }) 
   }
 
   const contextValue = useMemo(() => ({
+    eventId,
     themas,
     dataHeader,
     loading,
     lang,
     navbar,
-    setLang
-  }), [themas, dataHeader, loading, lang, navbar, setLang]);
+    setLang,
+    themeMode,
+    toggleTheme,
+  }), [
+    eventId,
+    themas,
+    dataHeader,
+    loading,
+    lang,
+    navbar,
+    setLang,
+    themeMode,
+    toggleTheme
+  ]);
 
   return (
     <AppCompanyContext.Provider value={contextValue}>

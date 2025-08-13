@@ -3,9 +3,11 @@ import { useNavigate } from "react-router-dom";
 import { useAppCompany } from "@/app/AppCompanyProvider";
 import styles from "./navbar.module.scss";
 import OverlayLoading from '../overlayLoading/OverlayLoading';
+import { useTranslation } from '@/src/hooks/useTranslation';
 
 export default function Navbar() {
   const { themas, navbar, loading } = useAppCompany();
+  const { translate } = useTranslation();
 
   if (loading || !navbar) {
     return <OverlayLoading />;
@@ -18,7 +20,7 @@ export default function Navbar() {
             key={index}
             onClick={() => {console.log(item.value)}}
           >
-            {item.viewValue}
+            {translate(item.viewValue, item.seeEnglishValue).toLowerCase()}
           </div>
         ))}
     </div>

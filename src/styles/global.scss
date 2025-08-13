@@ -1,18 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-body {
-  font-family: "Roboto", sans-serif;
+.light {
+  --color-bg: #ffffff;
+  --color-text: #111111;
+}
+
+.dark {
+  --color-bg: #121212;
+  --color-text: #ffffff;
+}
+
+body,
+input,
+label,
+select {
+  font-family: "Montserrat", sans-serif;
   font-size: 16px;
 }
 
 .container {
   width: 80%;
-  max-width: 1000px;
-  display: flex;
+  max-width: 1100px;
   align-items: center;
   // justify-content: flex-end;
   padding: 30px 0;
@@ -20,7 +34,7 @@ body {
 
 h2 {
   font-size: 40px;
-  margin-bottom: 30px;
+  margin-bottom: 50px;
 }
 
 .descriptionHtml {
@@ -47,5 +61,6 @@ h2 {
   background-repeat: repeat-y;
   background-position: center;
   min-height: 100vh;
-  background-color: #000000;
+  color: var(--color-text);
+  background-color: var(--color-bg);
 }

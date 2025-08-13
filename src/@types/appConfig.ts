@@ -1,4 +1,5 @@
 export interface IAppConfig {
+  id: string;
   heading: string;
   city: string;
   main_color: string;

@@ -6,7 +6,7 @@ export function useNavbarTitle(value: string) {
   const item = navbar?.find((item) => item.value.toLowerCase() === value.toLowerCase());
 
   return {
-    viewValue: (item?.viewValue)?.toLowerCase() || "",
-    seeEnglishValue: (item?.seeEnglishValue)?.toLowerCase() || "",
+    viewValue: item?.viewValue || "",
+    seeEnglishValue: item?.seeEnglishValue || "",
   };
 }
