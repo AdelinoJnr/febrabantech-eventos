@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.light {
+  --color-bg: #ffffff;
+  --color-bg-footer: #333;
+  --color-bg-rodape: #3e3e3e;
+  --color-text: #111111;
+  --color-text-white: #ffffff;
+  --color-text-white-hover:#bbbbbb;
+}
+
+.dark {
+  --color-bg: #121212;
+  --color-bg-footer: #333;
+  --color-bg-rodape: #3e3e3e;
+  --color-text: #ffffff;
+  --color-text-white: #ffffff;
+  --color-text-white-hover: #bbbbbb;
+}
+
+body,
+input,
+label,
+select {
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 30px 16px;
+}
+
+h2 {
+  font-size: 40px;
+  margin-bottom: 50px;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--color-text-white-hover);
+}
+
+.icon {
+  color: var(--color-text-white);
+  font-size: 30px;
+}
+
+.icon:hover {
+  color: var(--color-text-white-hover);
+}
+
+.page {
+  background-image: url("/app/assets/images/fundo-paginas-febrabantech.png");
+  background-size: contain;
+  background-repeat: repeat-y;
+  background-position: center;
+  min-height: 100vh;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+}
+
+@media (max-width: 1024px) {
+  h2 {
+    font-size: 25px;
+    margin-bottom: 30px;
+  }
+}
