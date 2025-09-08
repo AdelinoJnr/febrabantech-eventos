@@ -28,3 +28,22 @@
     flex: 1;
   }
 }
+
+@media (max-width: 1024px) {
+  .containerSobre {
+    flex-direction: column;
+
+    .dataSobre {
+      text-align: center;
+      font-size: 25px;
+    }
+
+    .imgSobre {
+      display: none;
+    }
+
+    .divisorVertcal {
+      display: none;
+    }
+  }
+}

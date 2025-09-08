@@ -56,11 +56,18 @@ h2 {
 }
 
 .page {
-  background-image: url("/src/assets/images/fundo-paginas-febrabantech.png");
+  background-image: url("/app/assets/images/fundo-paginas-febrabantech.png");
   background-size: contain;
   background-repeat: repeat-y;
   background-position: center;
   min-height: 100vh;
   color: var(--color-text);
   background-color: var(--color-bg);
+}
+
+@media (max-width: 1024px) {
+  h2 {
+    font-size: 25px;
+    margin-bottom: 30px;
+  }
 }

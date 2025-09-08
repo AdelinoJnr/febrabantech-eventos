@@ -50,8 +50,8 @@ export default function App() {
   return (
     <>
       <AppCompanyProvider>
-        <Header />
-        <Navbar />
+        {/* <Header />
+        <Navbar /> */}
         <main className="min-h-[70vh]">
           <Outlet />
         </main>

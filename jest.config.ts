@@ -5,10 +5,10 @@ const config = {
   setupFilesAfterEnv: ['<rootDir>/setupTests.ts'],
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/app/$1',
-    '\\.(css|scss)$': 'identity-obj-proxy',
+    '\\.(css|scss|sass)$': 'identity-obj-proxy',
   },
   transform: {
-    '^.+\\.tsx?$': ['ts-jest', { useESM: true }],
+    '^.+\\.(ts|tsx)$': 'ts-jest',
   },
   extensionsToTreatAsEsm: ['.ts', '.tsx'],
 };
