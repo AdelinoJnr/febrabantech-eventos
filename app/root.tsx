@@ -7,13 +7,15 @@ import {
   ScrollRestoration,
 } from "react-router";
 
-import AppCompanyProvider from "@/providers/AppCompanyProvider"
-import Header from "@/components/header/Header";
-
 import type { Route } from "./+types/root";
-import 'bootstrap/dist/css/bootstrap.min.css';
+
+import AppCompanyProvider from "@/providers/AppCompanyProvider"
+
+import Header from "@/components/header/Header";
 import Navbar from "@/components/navbar/Navbar";
-import "@/styles/global.scss";
+import Footer from "@/components/footer/Footer";
+
+import "@/styles/global.css";
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -55,7 +57,7 @@ export default function App() {
         <main className="min-h-[70vh]">
           <Outlet />
         </main>
-        {/* <Footer /> */}
+        <Footer />
       </AppCompanyProvider>
     </>
   );

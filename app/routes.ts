@@ -5,8 +5,8 @@ import {
 } from "@react-router/dev/routes";
 
 export default [
-  route("", "routes/home.tsx"),
-  route("sobre", "routes/sobre.tsx"),
+  // route("", "routes/home.tsx"),
+  route("sobre", "routes/sobre/Sobre.tsx"),
 
   // route("*", "routes/notFound.tsx"),
 ] satisfies RouteConfig;

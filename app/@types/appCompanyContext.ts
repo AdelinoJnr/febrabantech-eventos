@@ -1,4 +1,4 @@
-import type { IDataHeader, INavbar } from "./appConfig";
+import type { IDataFooter, IDataHeader, INavbar } from "./appConfig";
 import type { IThemas } from "./themas";
 
 export type Language = "br" | "en";
@@ -14,4 +14,5 @@ export interface IAppCompanyContext {
   themeMode: Theme;
   toggleTheme: () => void;
   setLang: (lang: Language) => void;
+  dataFooter: IDataFooter | null;
 }

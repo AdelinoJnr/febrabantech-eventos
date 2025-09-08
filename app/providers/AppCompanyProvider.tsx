@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
 import { appConfig } from "@/services/event-extension.service";
-import type { IDataHeader, IAppConfig, INavbar } from "@/@types/appConfig";
+import type { IDataHeader, IAppConfig, INavbar, IDataFooter } from "@/@types/appConfig";
 import type { IThemas } from "@/@types/themas";
 import type { IAppCompanyContext, Language, Theme } from "@/@types/appCompanyContext";
 import { environment } from "@/environments/environment";
@@ -15,6 +15,7 @@ const AppCompanyContext = createContext<IAppCompanyContext>({
   themeMode: 'dark',
   toggleTheme: () => {},
   setLang: () => {},
+  dataFooter: null,
 });
 
 export default function AppCompanyProvider({ children }: { children: React.ReactNode }) {
@@ -22,6 +23,7 @@ export default function AppCompanyProvider({ children }: { children: React.React
   const [themas, setThemas] = useState<IThemas | null>(null);
   const [navbar, setNavbar] = useState<INavbar[] | []>([]);
   const [dataHeader, setDataHeader] = useState<IDataHeader | null>(null);
+  const [dataFooter, setDataFooter] = useState<IDataFooter | null>(null);
   const [lang, setLang] = useState<Language>("br");
   const [themeMode, setThemeMode] = useState<Theme>("dark");
   const [loading, setLoading] = useState(true);
@@ -88,13 +90,18 @@ export default function AppCompanyProvider({ children }: { children: React.React
         button_text_color: data?.button_text_color || '',
         headingEvent: data?.heading,
         description_about: data?.description_about || '',
-      }
+      };
+
+      const footer: IDataFooter = {
+        emailImprensa: data?.emailImprensa,
+      };
 
       console.log(data)
       const menu: INavbar[] = Object.values(data?.menu);
 
       setNavbar(menu);
       setDataHeader(header);
+      setDataFooter(footer);
       setThemas(dataThemas);
     }
   }
@@ -109,6 +116,7 @@ export default function AppCompanyProvider({ children }: { children: React.React
     setLang,
     themeMode,
     toggleTheme,
+    dataFooter,
   }), [
     eventId,
     themas,
@@ -118,7 +126,8 @@ export default function AppCompanyProvider({ children }: { children: React.React
     navbar,
     setLang,
     themeMode,
-    toggleTheme
+    toggleTheme,
+    dataFooter,
   ]);
 
   return (

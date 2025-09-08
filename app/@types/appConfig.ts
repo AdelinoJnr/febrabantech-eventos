@@ -39,6 +39,7 @@ export interface IAppConfig {
   headingEvent: string;
   menu: INavbar[];
   description_about: string;
+  emailImprensa: string;
 }
 
 export interface IDataHeader {
@@ -71,4 +72,8 @@ export interface INavbar {
   seeEnglishValue: string;
   value: string;
   viewValue: string;
+}
+
+export interface IDataFooter {
+  emailImprensa: string;
 }
