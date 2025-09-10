@@ -1,5 +1,5 @@
 import { waitFor, screen } from '@testing-library/react';
-import userEvent from "@testing-library/user-event";
+// import userEvent from "@testing-library/user-event";
 import Sobre from "@/routes/sobre/Sobre";
 import { renderWithProviders } from "@/utils/renderWithProviders";
 import * as service from '@/services/event-extension.service';
@@ -18,17 +18,19 @@ describe("Página Sobre", () => {
 
   it("abre a página e mostra o loading inicialmente", async () => {
     renderWithProviders(<Sobre />);
-    const loading = screen.getByText(/loading/i);
-    expect(loading).toBeInTheDocument();
+
+    const overlay = screen.getByTestId("overlay-loading");
+    expect(overlay).toBeInTheDocument();
   });
 
   it("carrega os dados do evento e exibe o conteúdo", async () => {
     renderWithProviders(<Sobre />);
 
-    await waitFor(() => {
-      expect(screen.getByText("Título teste")).toBeInTheDocument();
-      expect(screen.getByText("Descrição teste")).toBeInTheDocument();
-    });
+    const titulo = await screen.findByText("Título teste", { exact: false });
+    const descricao = await screen.findByText("Descrição teste", { exact: false });
+
+    expect(titulo).toBeInTheDocument();
+    expect(descricao).toBeInTheDocument();
   });
 
   it("exibe a imagem sobre do evento", async () => {

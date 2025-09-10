@@ -4,6 +4,7 @@ import type { IDataHeader, IAppConfig, INavbar, IDataFooter } from "@/@types/app
 import type { IThemas } from "@/@types/themas";
 import type { IAppCompanyContext, Language, Theme } from "@/@types/appCompanyContext";
 import { environment } from "@/environments/environment";
+import { orderNavBar } from "@/utils/orderNavBar";
 
 const AppCompanyContext = createContext<IAppCompanyContext>({
   eventId: '',
@@ -96,8 +97,7 @@ export default function AppCompanyProvider({ children }: { children: React.React
         emailImprensa: data?.emailImprensa,
       };
 
-      console.log(data)
-      const menu: INavbar[] = Object.values(data?.menu);
+      const menu: INavbar[] = orderNavBar(Object.values(data?.menu));
 
       setNavbar(menu);
       setDataHeader(header);

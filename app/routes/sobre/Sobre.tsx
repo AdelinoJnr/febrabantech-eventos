@@ -28,10 +28,9 @@ export default function Sobre() {
     const fetchGetPageSobre = async () => {
       try {
         const result = await getPageSobre(eventId);
-        console.log("result", result);
         setDataSobre(result);
       } catch (err) {
-        console.error("Erro ao buscar app-company:", err);
+        console.error("Erro ao buscar conteudo 'Sobre':", err);
       } finally {
         setLoading(false);
       }
