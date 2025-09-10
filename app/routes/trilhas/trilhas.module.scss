@@ -1,0 +1,27 @@
+.containerTrilhas {
+  display: flex;
+}
+
+.descriptionHtml {
+  p {
+    margin-bottom: 0.5rem;
+    line-height: 1.5;
+  }
+
+  br {
+    display: none;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    margin: 1rem auto;
+    display: block;
+  }
+}
+
+@media (max-width: 1024px) {
+  .containerTrilhas {
+    flex-direction: column;
+  }
+}
