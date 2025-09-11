@@ -3,29 +3,36 @@
 
 * {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
 }
 
 .light {
   --color-bg: #ffffff;
+  --calor-bg-black: #0a0a0a;
   --color-bg-footer: #333;
   --color-bg-rodape: #3e3e3e;
+  --color-bg-cards: #f1f1f1;
   --color-text: #111111;
   --color-text-white: #ffffff;
-  --color-text-white-hover:#bbbbbb;
+  --color-text-white-hover: #bbbbbb;
+  --color-button: #1f2937;
+  --color-button-hover: #6b7280;
 }
 
 .dark {
-  --color-bg: #121212;
+  --color-bg: #030303;
+  --calor-bg-black: #0a0a0a;
   --color-bg-footer: #333;
   --color-bg-rodape: #3e3e3e;
+  --color-bg-cards: #101010;
   --color-text: #ffffff;
   --color-text-white: #ffffff;
   --color-text-white-hover: #bbbbbb;
+  --color-button: #1f2937;
+  --color-button-hover: #6b7280;
 }
 
 body,
+html,
 input,
 label,
 select {
@@ -52,6 +59,10 @@ a:hover {
   color: var(--color-text-white-hover);
 }
 
+p {
+  font-size: 0.9rem;
+}
+
 .icon {
   color: var(--color-text-white);
   font-size: 30px;
@@ -66,7 +77,7 @@ a:hover {
   background-size: contain;
   background-repeat: repeat-y;
   background-position: center;
-  min-height: 100vh;
+  min-height: 80vh;
   color: var(--color-text);
   background-color: var(--color-bg);
 }

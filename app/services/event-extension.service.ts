@@ -1,6 +1,7 @@
 import { api } from './api';
 
 import type { IAppConfig } from '@/@types/appConfig';
+import { IGetPagePalestrantes } from '@/@types/getPagePalestrantes';
 import type { IGetPageSobre } from '@/@types/getPageSobre';
 import { IGetPageTrilhas } from '@/@types/getPageTrilhas';
 
@@ -31,6 +32,17 @@ export const getPageTrilhas = async (event_id: string): Promise<IGetPageTrilhas>
 
   const response = await api.get<IGetPageTrilhas>(
     `/pages-events/pc/getPageTrilhas?event_id=${event_id}`,
+    { headers: token ? { Authorization: token } : {}, }
+  );
+
+  return response.data;
+}
+
+export const getPagePalestrantes = async (event_id: string, limit: number = 20): Promise<IGetPagePalestrantes[]> => {
+  const token = localStorage.getItem("token");
+
+  const response = await api.get<IGetPagePalestrantes[]>(
+    `/pages-events/pc/getPagePalestrantes?event_id=${event_id}&limit=${limit}`,
     { headers: token ? { Authorization: token } : {}, }
   );
 

@@ -1,0 +1,21 @@
+.cardPalestrantes {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: var(--color-bg-cards);
+  transition: transform 0.2s;
+  max-width: 240px;
+  max-height: 440px;
+  justify-content: space-between;
+  cursor: pointer;
+
+  img {
+    width: 220px;
+    height: 220px;
+    border-radius: 4px;
+  }
+
+
+}
