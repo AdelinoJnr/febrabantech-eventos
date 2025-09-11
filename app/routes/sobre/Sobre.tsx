@@ -7,11 +7,12 @@ import { getPageSobre } from '@/services/event-extension.service';
 import OverlayLoading from '@/components/overlayLoading/OverlayLoading';
 import { Route } from './+types/Sobre';
 import styles from '@/routes/sobre/sobre.module.scss';
+import { useCache } from '@/providers/CacheProvider';
 
 export function meta({}: Route.MetaArgs) {
   return [
     { title: "Sobre" },
-    { name: "description", content: "Welcome to React Router!" },
+    { name: "description", content: "Sobre" },
   ];
 }
 
@@ -21,14 +22,22 @@ export default function Sobre() {
   const { viewValue, seeEnglishValue } = useNavbarTitle("sobre");
   const { translate } = useTranslation();
   const { themas, eventId } = useAppCompany();
+  const { cache, setCache } = useCache();
 
   useEffect(() => {
     if (!eventId) return;
+
+    if (cache.sobre) {
+      setDataSobre(cache.sobre);
+      setLoading(false);
+      return;
+    }
 
     const fetchGetPageSobre = async () => {
       try {
         const result = await getPageSobre(eventId);
         setDataSobre(result);
+        setCache({ sobre: result });
       } catch (err) {
         console.error("Erro ao buscar conteudo 'Sobre':", err);
       } finally {
@@ -52,9 +61,9 @@ export default function Sobre() {
 
           <div className={styles.dataSobre}>
             <div>
-              <p style={{ 'color': themas?.corSecundaria }}>
+              <div className='text-[30px]' style={{ 'color': themas?.corSecundaria }}>
                 { translate(dataSobre.title_about, dataSobre.title_about_translated) }
-              </p>
+              </div>
             </div>
             <div>
               <img className={styles.imgSobre} src={ dataSobre.img_about } alt="Imagem sobre evento" />

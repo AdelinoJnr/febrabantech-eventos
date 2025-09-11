@@ -9,11 +9,12 @@ import { getPageTrilhas } from '@/services/event-extension.service';
 import OverlayLoading from '@/components/overlayLoading/OverlayLoading';
 
 import styles from '@/routes/trilhas/trilhas.module.scss';
+import { useCache } from '@/providers/CacheProvider';
 
 export function meta({ }: Route.MetaArgs) {
   return [
     { title: "Trilhas" },
-    { name: "description", content: "Welcome to React Router!" },
+    { name: "description", content: "Trilhas" },
   ];
 }
 
@@ -23,15 +24,22 @@ export default function Trilhas() {
   const { viewValue, seeEnglishValue } = useNavbarTitle("trilhas");
   const { translate } = useTranslation();
   const { themas, eventId } = useAppCompany();
+  const { cache, setCache } = useCache();
 
   useEffect(() => {
     if (!eventId) return;
 
+    if (cache.trilhas) {
+      setDataTrilhas(cache.trilhas);
+      setLoading(false);
+      return;
+    }
+
     const fetchGetPageTrilhas = async () => {
       try {
         const result = await getPageTrilhas(eventId);
-        console.log("result", result);
         setDataTrilhas(result);
+        setCache({ trilhas: result });
       } catch (err) {
         console.error("Erro ao buscar conteudo 'Trilhas':", err);
       } finally {

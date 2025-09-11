@@ -12,7 +12,7 @@ import ModalPalestrantes from '@/components/modals/modalPalestrantes/ModalPalest
 export function meta({ }: Route.MetaArgs) {
   return [
     { title: "Palestrantes" },
-    { name: "description", content: "Welcome to React Router!" },
+    { name: "description", content: "Palestrantes" },
   ];
 }
 

@@ -16,6 +16,7 @@ import Navbar from "@/components/navbar/Navbar";
 import Footer from "@/components/footer/Footer";
 
 import "@/styles/global.css";
+import { CacheProvider } from "./providers/CacheProvider";
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -52,12 +53,14 @@ export default function App() {
   return (
     <>
       <AppCompanyProvider>
-        {/* <Header /> */}
-        <Navbar />
-        <main className="min-h-[70vh]">
-          <Outlet />
-        </main>
-        <Footer />
+        <CacheProvider>
+          {/* <Header /> */}
+          <Navbar />
+          <main className="min-h-[70vh]">
+            <Outlet />
+          </main>
+          <Footer />
+        </CacheProvider>
       </AppCompanyProvider>
     </>
   );
