@@ -78,6 +78,25 @@ describe("Página Palestrantes", () => {
     }
   });
 
+  it("mostra fallback quando não há pseudonym, mini_bio ou image_url", async () => {
+    const mock = [
+      { ...mockPalestrantes[0], pseudonym: "", mini_bio: "", image_url: "" }
+    ];
+
+    vi.spyOn(service, "getPagePalestrantes").mockResolvedValue(mock);
+
+    renderWithProviders(<Palestrantes />);
+
+    const cardName = await screen.findByText(mock[0].speaker_name);
+    expect(cardName).toBeInTheDocument();
+
+    const cardBio = await screen.findByText("sem biografia");
+    expect(cardBio).toBeInTheDocument();
+
+    const img = screen.getByRole("img");
+    expect(img).toHaveAttribute("src", "./app/assets/images/user_placeholder.png");
+  });
+
   it("renderiza exatamente 3 cards de palestrantes", async () => {
     renderWithProviders(<Palestrantes />);
 
