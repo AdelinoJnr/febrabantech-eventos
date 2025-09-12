@@ -78,7 +78,7 @@ describe("Página Palestrantes", () => {
     }
   });
 
-  it("mostra fallback quando não há pseudonym, mini_bio ou image_url", async () => {
+  it("Quando não há pseudonym, mini_bio ou image_url", async () => {
     const mock = [
       { ...mockPalestrantes[0], pseudonym: "", mini_bio: "", image_url: "" }
     ];
@@ -118,7 +118,6 @@ describe("Página Palestrantes", () => {
   it("fecha o modal ao clicar no botão de fechar", async () => {
     renderWithProviders(<Palestrantes />);
 
-    
     const firstCard = await screen.findByText(mockPalestrantes[0].pseudonym || mockPalestrantes[0].speaker_name);
     fireEvent.click(firstCard);
     
