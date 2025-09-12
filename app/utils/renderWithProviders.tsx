@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import type { RenderOptions } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 import AppCompanyProvider from "@/providers/AppCompanyProvider";
+import { CacheProvider } from "@/providers/CacheProvider";
 
 export function renderWithProviders(
   ui: React.ReactElement,
@@ -10,7 +11,9 @@ export function renderWithProviders(
 ) {
   const Wrapper = ({ children }: { children: ReactNode }) => (
     <AppCompanyProvider>
-      <MemoryRouter>{children}</MemoryRouter>
+      <CacheProvider>
+        <MemoryRouter>{children}</MemoryRouter>
+      </CacheProvider>
     </AppCompanyProvider>
   );
 

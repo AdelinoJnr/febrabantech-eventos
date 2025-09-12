@@ -30,7 +30,6 @@ export default function Patrocinadores() {
     const fetchGetPageSobre = async () => {
       try {
         const result = await getPagePalestrantes(eventId);
-        console.log(result);
         setDataPalestrantes(result);
       } catch (err) {
         console.error("Erro ao buscar conteudo 'Sobre':", err);
@@ -44,7 +43,6 @@ export default function Patrocinadores() {
 
   const handleClick = (id: string) => {
     const palestrante = dataPalestrantes.find((p) => p.id === id);
-    console.log(palestrante);
     if (palestrante) setSelectedPalestrante(palestrante);
   };
 

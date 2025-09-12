@@ -1,4 +1,4 @@
-import { screen } from '@testing-library/react';
+import { act, screen } from '@testing-library/react';
 // import userEvent from "@testing-library/user-event";
 import Trilhas from "@/routes/trilhas/Trilhas";
 import { renderWithProviders } from "@/utils/renderWithProviders";
@@ -7,10 +7,12 @@ import { vi } from 'vitest';
 
 describe("Página Trilha", () => {
   beforeEach(() => {
-    vi.spyOn(service, "getPageTrilhas").mockResolvedValue({
-      description_trail: "Descrição teste",
-      description_trail_translated: "Description test",
-    });
+    vi.spyOn(service, "getPageTrilhas").mockImplementation(() =>
+      Promise.resolve({
+        description_trail: "Descrição teste",
+        description_trail_translated: "Description test",
+      })
+    );
   });
 
   it("abre a página e mostra o loading inicialmente", async () => {
@@ -23,7 +25,7 @@ describe("Página Trilha", () => {
   it("carrega os dados do evento e exibe o conteúdo", async () => {
     renderWithProviders(<Trilhas />);
 
-    const descricao = await screen.findByText("Descrição teste", { exact: false });
+    const descricao = await screen.findByText("Descrição teste");
     expect(descricao).toBeInTheDocument();
   });
 });

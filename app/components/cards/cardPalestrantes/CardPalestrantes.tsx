@@ -18,12 +18,12 @@ type CardPalestrantesProps = {
 export default function CardPalestrantes({ id, image_url, speaker_name, pseudonym, mini_bio, mini_bio_en, handleClick }: CardPalestrantesProps) {
   const { translate } = useTranslation();
   const { themas } = useAppCompany();
-  
+
   return (
-    <div className={styles.cardPalestrantes} onClick={ () => handleClick(id) }>
+    <div className={styles.cardPalestrantes} onClick={() => handleClick(id)}>
       <img src={image_url || "./app/assets/images/user_placeholder.png"} alt={speaker_name} />
       <h5 style={{ 'color': themas?.corSecundaria }} className='line-clamp-2 mt-1 mb-1'>{pseudonym || speaker_name}</h5>
-      <p className='line-clamp-4'>{ mini_bio && translate(mini_bio, mini_bio_en) || 'sem biografia' }</p>
+      <p className='line-clamp-4'>{mini_bio && translate(mini_bio, mini_bio_en) || 'sem biografia'}</p>
       <div className='flex justify-center items-center gap-2 cursor-pointer mt-3' style={{ 'color': themas?.corSecundaria }}>ver <FaPlus /> </div>
     </div>
   )

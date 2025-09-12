@@ -52,6 +52,7 @@ export default function ModalPalestrantes({
       >
         <button
           onClick={onClose}
+          data-testid="close-modal"
           className={`${styles.closeButton} absolute top-3 right-3 text-gray-700 bg-transparent border-0 cursor-pointer`}
         >
           <IoCloseCircleOutline size={24} />
@@ -70,14 +71,16 @@ export default function ModalPalestrantes({
             </div>
 
             <div className="flex flex-col items-center">
-              <div className="agenda">
+              <div data-testid="palestrante-agenda" className="agenda">
                 <span>📅</span> { diasAgenda.join('; ') }
               </div>
               <button className="mt-3 text-sm bg-transparent border-0 cursor-pointer hover:underline" style={{ 'color': themas?.corSecundaria }}>ver na agenda</button>
             </div>
           </div>
 
-          <div className="pt-[40px] pb-[20px] pe-[40px] w-full text-[16px] text-[#111111] leading-relaxed">
+          <div
+            data-testid="mini-bio-palestrante-modal"
+            className="pt-[40px] pb-[20px] pe-[40px] w-full text-[16px] text-[#111111] leading-relaxed">
             { translate(mini_bio, mini_bio_en) }
           </div>
         </div>

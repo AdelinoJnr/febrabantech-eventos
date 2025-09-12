@@ -1,5 +1,4 @@
-import { waitFor, screen } from '@testing-library/react';
-// import userEvent from "@testing-library/user-event";
+import { waitFor, screen, act } from '@testing-library/react';
 import Sobre from "@/routes/sobre/Sobre";
 import { renderWithProviders } from "@/utils/renderWithProviders";
 import * as service from '@/services/event-extension.service';
@@ -7,13 +6,15 @@ import { vi } from 'vitest';
 
 describe("Página Sobre", () => {
   beforeEach(() => {
-    vi.spyOn(service, "getPageSobre").mockResolvedValue({
-      title_about: "Título teste",
-      title_about_translated: "Title test",
-      description_about: "Descrição teste",
-      description_about_translated: "Description test",
-      img_about: "imagem.png",
-    });
+    vi.spyOn(service, "getPageSobre").mockImplementation(() =>
+      Promise.resolve({
+        title_about: "Título teste",
+        title_about_translated: "Title test",
+        description_about: "Descrição teste",
+        description_about_translated: "Description test",
+        img_about: "imagem.png",
+      })
+    );
   });
 
   it("abre a página e mostra o loading inicialmente", async () => {
@@ -26,8 +27,8 @@ describe("Página Sobre", () => {
   it("carrega os dados do evento e exibe o conteúdo", async () => {
     renderWithProviders(<Sobre />);
 
-    const titulo = await screen.findByText("Título teste", { exact: false });
-    const descricao = await screen.findByText("Descrição teste", { exact: false });
+    const titulo = await screen.findByText("Título teste");
+    const descricao = await screen.findByText("Descrição teste");
 
     expect(titulo).toBeInTheDocument();
     expect(descricao).toBeInTheDocument();
@@ -35,7 +36,7 @@ describe("Página Sobre", () => {
 
   it("exibe a imagem sobre do evento", async () => {
     renderWithProviders(<Sobre />);
-    
+
     const img = await screen.findByAltText(/Imagem sobre evento/i);
     expect(img).toBeInTheDocument();
     expect(img).toHaveAttribute("src", "imagem.png");
