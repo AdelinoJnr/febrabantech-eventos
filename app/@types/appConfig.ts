@@ -40,6 +40,10 @@ export interface IAppConfig {
   menu: INavbar[];
   description_about: string;
   emailImprensa: string;
+  background_img: string;
+  background_img_mobile: string;
+  background_img_tablet: string;
+  sponsor_image_one: string;
 }
 
 export interface IDataHeader {
@@ -76,4 +80,11 @@ export interface INavbar {
 
 export interface IDataFooter {
   emailImprensa: string;
+}
+
+export interface IDataPatrocinadores {
+  background_img: string;
+  background_img_mobile: string;
+  background_img_tablet: string;
+  sponsor_image_one: string;
 }

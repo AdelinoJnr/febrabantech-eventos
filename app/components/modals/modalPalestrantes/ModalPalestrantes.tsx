@@ -55,7 +55,7 @@ export default function ModalPalestrantes({
           data-testid="close-modal"
           className={`${styles.closeButton} absolute top-3 right-3 text-gray-700 bg-transparent border-0 cursor-pointer`}
         >
-          <IoCloseCircleOutline size={24} />
+          <IoCloseCircleOutline className="me-2" size={28} />
         </button>
 
         <div className="flex flex-row gap-6">
@@ -80,7 +80,7 @@ export default function ModalPalestrantes({
 
           <div
             data-testid="mini-bio-palestrante-modal"
-            className="pt-[40px] pb-[20px] pe-[40px] w-full text-[16px] text-[#111111] leading-relaxed">
+            className="pt-[40px] pb-[20px] pe-[40px] max-h-[600px] w-full text-[16px] text-[#111111] leading-relaxed overflow-y-auto">
             { translate(mini_bio, mini_bio_en) }
           </div>
         </div>

@@ -2,6 +2,7 @@ import { api } from './api';
 
 import type { IAppConfig } from '@/@types/appConfig';
 import { IGetPagePalestrantes } from '@/@types/getPagePalestrantes';
+import { IGetPagePatrocinadores } from '@/@types/getPagePatrocinadores';
 import type { IGetPageSobre } from '@/@types/getPageSobre';
 import { IGetPageTrilhas } from '@/@types/getPageTrilhas';
 
@@ -43,6 +44,17 @@ export const getPagePalestrantes = async (event_id: string, limit: number = 20):
 
   const response = await api.get<IGetPagePalestrantes[]>(
     `/pages-events/pc/getPagePalestrantes?event_id=${event_id}&limit=${limit}`,
+    { headers: token ? { Authorization: token } : {}, }
+  );
+
+  return response.data;
+}
+
+export const getPagePatrocinadores = async (event_id: string, limit: number = 20): Promise<IGetPagePatrocinadores> => {
+  const token = localStorage.getItem("token");
+
+  const response = await api.get<IGetPagePatrocinadores>(
+    `/pages-events/pc/getPagePatrocinadores?event_id=${event_id}`,
     { headers: token ? { Authorization: token } : {}, }
   );
 

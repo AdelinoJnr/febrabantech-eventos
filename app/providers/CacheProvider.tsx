@@ -1,8 +1,12 @@
+import { IGetPagePatrocinadores } from "@/@types/getPagePatrocinadores";
+import { IGetPageSobre } from "@/@types/getPageSobre";
+import { IGetPageTrilhas } from "@/@types/getPageTrilhas";
 import { createContext, ReactNode, useContext, useState } from "react";
 
 interface CacheState {
-  sobre?: any;
-  trilhas?: any;
+  sobre?: IGetPageSobre;
+  trilhas?: IGetPageTrilhas;
+  patrocinadores?: IGetPagePatrocinadores;
 }
 
 interface CacheContextType {
