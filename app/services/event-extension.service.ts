@@ -1,3 +1,4 @@
+import { IGetPageIngressos } from '@/@types/getPageIngressos';
 import { api } from './api';
 
 import type { IAppConfig } from '@/@types/appConfig';
@@ -50,11 +51,22 @@ export const getPagePalestrantes = async (event_id: string, limit: number = 20):
   return response.data;
 }
 
-export const getPagePatrocinadores = async (event_id: string, limit: number = 20): Promise<IGetPagePatrocinadores> => {
+export const getPagePatrocinadores = async (event_id: string): Promise<IGetPagePatrocinadores> => {
   const token = localStorage.getItem("token");
 
   const response = await api.get<IGetPagePatrocinadores>(
     `/pages-events/pc/getPagePatrocinadores?event_id=${event_id}`,
+    { headers: token ? { Authorization: token } : {}, }
+  );
+
+  return response.data;
+}
+
+export const getPageIngressos = async (event_id: string): Promise<IGetPageIngressos> => {
+  const token = localStorage.getItem("token");
+
+  const response = await api.get<IGetPageIngressos>(
+    `/pages-events/pc/getPageIngressos?event_id=${event_id}`,
     { headers: token ? { Authorization: token } : {}, }
   );
 

@@ -10,6 +10,7 @@ export default [
   route("trilhas", "routes/trilhas/Trilhas.tsx"),
   route("palestrante", "routes/palestrantes/Palestrantes.tsx"),
   route("patrocinadores", "routes/patrocinadores/Patrocinadores.tsx"),
+  route("ingressos", "routes/ingressos/Ingressos.tsx"),
 
   // route("*", "routes/notFound.tsx"),
 ] satisfies RouteConfig;

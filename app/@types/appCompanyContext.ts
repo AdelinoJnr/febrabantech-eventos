@@ -4,7 +4,7 @@ import type { IThemas } from "./themas";
 export type Language = "br" | "en";
 export type Theme = "light" | "dark";
 
-export interface IAppCompanyContext {
+export type IAppCompanyContext = {
   eventId: string;
   themas: IThemas | null;
   dataHeader: IDataHeader | null;

@@ -1,4 +1,4 @@
-export interface IGetPagePalestrantes {
+export type IGetPagePalestrantes = {
   id: string;
   mini_bio: string;
   mini_bio_en: string;

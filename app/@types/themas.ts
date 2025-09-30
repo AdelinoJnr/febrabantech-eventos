@@ -1,4 +1,4 @@
-export interface IThemas {
+export type IThemas = {
   corPrincipal: string;
   corSecundaria: string;
   corFundo: string;

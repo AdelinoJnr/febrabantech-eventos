@@ -4,19 +4,7 @@ import { IoCloseCircleOutline } from "react-icons/io5";
 import styles from "./modalPalestrantes.module.scss";
 import { useTranslation } from "@/hooks/useTranslation";
 import { useAppCompany } from "@/providers/AppCompanyProvider";
-
-type ModalPalestrantesProps = {
-  isOpen: boolean;
-  onClose: () => void;
-  image_url: string;
-  speaker_name: string;
-  pseudonym: string;
-  mini_bio: string;
-  mini_bio_en: string;
-  agenda: { talk_start_date: Date }[];
-};
-
-
+import { ModalPalestrantesProps } from "@/@types/modalPalestrantes";
 
 export default function ModalPalestrantes({
   isOpen,

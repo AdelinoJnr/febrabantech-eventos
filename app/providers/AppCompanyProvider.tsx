@@ -25,7 +25,6 @@ export default function AppCompanyProvider({ children }: { children: React.React
   const [navbar, setNavbar] = useState<INavbar[] | []>([]);
   const [dataHeader, setDataHeader] = useState<IDataHeader | null>(null);
   const [dataFooter, setDataFooter] = useState<IDataFooter | null>(null);
-  const [dataPatrocinadores, setDataPatrocinadores] = useState<IDataPatrocinadores | null>(null);
   const [lang, setLang] = useState<Language>("br");
   const [themeMode, setThemeMode] = useState<Theme>("dark");
   const [loading, setLoading] = useState(true);
@@ -98,17 +97,8 @@ export default function AppCompanyProvider({ children }: { children: React.React
         emailImprensa: data?.emailImprensa,
       };
 
-      const patrocinadores: IDataPatrocinadores = {
-        background_img: data?.background_img || '',
-        background_img_mobile: data?.background_img_mobile || '',
-        background_img_tablet: data?.background_img_tablet || '',
-        sponsor_image_one: data?.sponsor_image_one || '',
-      };
-      console.log(patrocinadores);
-
       const menu: INavbar[] = orderNavBar(Object.values(data?.menu));
 
-      setDataPatrocinadores(patrocinadores);
       setNavbar(menu);
       setDataHeader(header);
       setDataFooter(footer);
@@ -127,7 +117,6 @@ export default function AppCompanyProvider({ children }: { children: React.React
     themeMode,
     toggleTheme,
     dataFooter,
-    dataPatrocinadores,
   }), [
     eventId,
     themas,
@@ -139,7 +128,6 @@ export default function AppCompanyProvider({ children }: { children: React.React
     themeMode,
     toggleTheme,
     dataFooter,
-    dataPatrocinadores,
   ]);
 
   return (

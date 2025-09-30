@@ -1,4 +1,4 @@
-export interface IGetPageSobre {
+export type IGetPageSobre = {
   title_about: string;
   title_about_translated: string;
   description_about: string;

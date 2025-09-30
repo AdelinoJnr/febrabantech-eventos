@@ -4,16 +4,7 @@ import { FaPlus } from "react-icons/fa6";
 import { useAppCompany } from '@/providers/AppCompanyProvider';
 
 import styles from '@/components/cards/cardPalestrantes/cardPalestrantes.module.scss';
-
-type CardPalestrantesProps = {
-  id: string;
-  image_url: string;
-  speaker_name: string;
-  pseudonym: string
-  mini_bio: string;
-  mini_bio_en: string;
-  handleClick: (id: string) => void;
-};
+import { CardPalestrantesProps } from '@/@types/propsComponents';
 
 export default function CardPalestrantes({ id, image_url, speaker_name, pseudonym, mini_bio, mini_bio_en, handleClick }: CardPalestrantesProps) {
   const { translate } = useTranslation();

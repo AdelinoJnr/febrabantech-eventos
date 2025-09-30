@@ -1,3 +1,4 @@
+import { IGetPageIngressos } from "@/@types/getPageIngressos";
 import { IGetPagePatrocinadores } from "@/@types/getPagePatrocinadores";
 import { IGetPageSobre } from "@/@types/getPageSobre";
 import { IGetPageTrilhas } from "@/@types/getPageTrilhas";
@@ -7,6 +8,7 @@ interface CacheState {
   sobre?: IGetPageSobre;
   trilhas?: IGetPageTrilhas;
   patrocinadores?: IGetPagePatrocinadores;
+  ingressos?: IGetPageIngressos;
 }
 
 interface CacheContextType {
