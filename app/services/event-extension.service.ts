@@ -6,6 +6,7 @@ import { IGetPagePalestrantes } from '@/@types/getPagePalestrantes';
 import { IGetPagePatrocinadores } from '@/@types/getPagePatrocinadores';
 import type { IGetPageSobre } from '@/@types/getPageSobre';
 import { IGetPageTrilhas } from '@/@types/getPageTrilhas';
+import { IGetPageDicas } from '@/@types/getPageDicas';
 
 export const appConfig = async (id: string): Promise<IAppConfig> => {
   const token = localStorage.getItem("token");
@@ -67,6 +68,17 @@ export const getPageIngressos = async (event_id: string): Promise<IGetPageIngres
 
   const response = await api.get<IGetPageIngressos>(
     `/pages-events/pc/getPageIngressos?event_id=${event_id}`,
+    { headers: token ? { Authorization: token } : {}, }
+  );
+
+  return response.data;
+}
+
+export const getPageDicas = async (event_id: string): Promise<IGetPageDicas> => {
+  const token = localStorage.getItem("token");
+
+  const response = await api.get<IGetPageDicas>(
+    `/pages-events/pc/getPageDicas?event_id=${event_id}`,
     { headers: token ? { Authorization: token } : {}, }
   );
 

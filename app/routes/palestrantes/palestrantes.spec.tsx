@@ -3,7 +3,6 @@ import Palestrantes from "@/routes/palestrantes/Palestrantes";
 import { renderWithProviders } from "@/utils/renderWithProviders";
 import * as service from '@/services/event-extension.service';
 import { vi } from 'vitest';
-import CardPalestrantes from '@/components/cards/cardPalestrantes/CardPalestrantes';
 
 const mockPalestrantes = [
   {
@@ -43,16 +42,6 @@ const mockPalestrantes = [
     ],
   },
 ];
-
-export interface IGetPagePalestrantes {
-  id: string;
-  mini_bio: string;
-  mini_bio_en: string;
-  image_url: string;
-  pseudonym: string;
-  speaker_name: string;
-  agenda: { talk_start_date: Date }[];
-}
 
 describe("Página Palestrantes", () => {
   beforeEach(() => {

@@ -4,32 +4,40 @@ import React from "react";
 import { IoCloseCircleOutline } from "react-icons/io5";
 import { Link } from "react-router";
 
-export default function ModalBase({ isOpen, onClose, title, content, button, isHtml }: ModalBaseProps) {
+export default function ModalBase({ isOpen, onClose, title, content, button, isHtml, img }: ModalBaseProps) {
   const { themas } = useAppCompany();
 
   if (!isOpen) return null;
 
   return (
     <div className="fixed inset-0 flex items-center justify-center z-50 bg-black/70">
-      <div className="bg-white w-[450px] max-w-[90%] h-[600px] rounded-[8px] shadow-lg flex flex-col overflow-hidden">
+      <div className="bg-white w-[400px] max-w-[90%] h-[600px] rounded-[8px] shadow-lg flex flex-col overflow-hidden">
         <div className="flex justify-between items-center px-4 py-3">
           {/* Titulo - NÃO obrigatorio */}
           <h3
             style={{ 'color': themas?.corSecundaria }}
-            className="text-lg font-bold text-center flex-1 text-[20px]"
+            className="text-lg font-bold text-center flex-1 text-[20px] line-clamp-2"
           >{title}</h3>
 
           {/* Close modal */}
           <button
-            className="ml-4 p-2 rounded-full hover:text-[#444] transition cursor-pointer"
+            className="ml-4 p-2 rounded-full hover:text-[#444] text-[#000] transition cursor-pointer"
             onClick={onClose}
           >
             <IoCloseCircleOutline size={30} />
           </button>
         </div>
 
+        {/* Imagem - NÃO obrigatorio */}
+        { img &&
+            <div className="p-3">
+              <img src={img} alt='image' />
+            </div>
+        }
+        
+
         {/* Conteúdo (HTML ou String) */}
-        <div className="p-4 flex-1 overflow-y-auto">
+        <div className="p-4 flex-1 overflow-y-auto text-[#000]">
           {isHtml && typeof content === "string" ? (
             <div dangerouslySetInnerHTML={{ __html: content }} />
           ) : (

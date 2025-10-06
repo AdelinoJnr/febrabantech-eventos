@@ -1,3 +1,5 @@
+import { whatTips } from "./getPageDicas";
+
 export type CardPalestrantesProps = {
   id: string;
   image_url: string;
@@ -29,4 +31,12 @@ export interface ModalBaseProps {
   content: string | React.ReactNode;
   isHtml?: boolean;
   button?: ModalButton;
+  img?: string;
+}
+
+export interface CardDicasProps {
+  icon: keyof typeof whatTips;
+  titleCard: string;
+  image_url: string;
+  content: string;
 }

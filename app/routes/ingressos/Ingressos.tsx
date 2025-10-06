@@ -38,7 +38,6 @@ export default function Ingressos() {
     const fetchGetPageIngressos = async () => {
       try {
         const result = await getPageIngressos(eventId);
-        console.log(result);
         setDataIngressos(result);
         setCache({ ingressos: result });
       } catch (err) {
