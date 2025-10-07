@@ -5,6 +5,13 @@ import {
 } from "@react-router/dev/routes";
 
 export default [
-  index("routes/home.tsx"),
-  route("sobre", "routes/sobre.tsx"),
+  // route("", "routes/home.tsx"),
+  route("sobre", "routes/sobre/Sobre.tsx"),
+  route("trilhas", "routes/trilhas/Trilhas.tsx"),
+  route("dicas", "routes/dicas/Dicas.tsx"),
+  route("palestrante", "routes/palestrantes/Palestrantes.tsx"),
+  route("patrocinadores", "routes/patrocinadores/Patrocinadores.tsx"),
+  route("inscricao", "routes/ingressos/Ingressos.tsx"),
+
+  // route("*", "routes/notFound.tsx"),
 ] satisfies RouteConfig;
