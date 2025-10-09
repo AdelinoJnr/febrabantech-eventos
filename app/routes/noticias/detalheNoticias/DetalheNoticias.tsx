@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Route } from '../detalheNoticias/+types/DetalheNoticias';
-import { useLocation } from 'react-router';
+import { useLocation, useParams } from 'react-router';
 import { useAppCompany } from '@/providers/AppCompanyProvider';
 import { IGetPageNoticias } from '@/@types/getPageNoticias';
 import OverlayLoading from '@/components/overlayLoading/OverlayLoading';
@@ -18,24 +18,24 @@ export default function DetalheNoticias() {
   const [loading, setLoading] = useState(true);
   const [dataNoticias, setDataNoticias] = useState<IGetPageNoticias>();
   const location = useLocation();
-  const data = location.state as { id: string };
+  const { friendly_url } = useParams<{ friendly_url: string }>();
 
   useEffect(() => {
-    if (!data.id) return;
+    if (!friendly_url) return;
 
     const fetchGetPageSobre = async () => {
       try {
-        // const result = await getPageSobre(data.id);
-        // setDataNoticias(result);
+        // const result = await getPageSobre(friendly_url);
+        // setDataNoticias();
       } catch (err) {
-        console.error("Erro ao buscar conteudo 'Sobre':", err);
+        console.error("Erro ao buscar noticia pela URL (friendly_url):", err);
       } finally {
         setLoading(false);
       }
     };
 
     fetchGetPageSobre();
-  }, [data.id]);
+  }, [friendly_url]);
 
   if (loading || !dataNoticias) {
     return <OverlayLoading />;
@@ -44,10 +44,10 @@ export default function DetalheNoticias() {
   return (
     <section className='page'>
       <div className='container'>
-        <h2>Biometrias avançadas reforçam segurança no setor financeiro</h2>
-        <p>No Febraban Tech 2025, especialistas destacaram que a tecnologia se tornou essencial</p>
+        <h3 className='text-[30px] font-bold mb-3' style={{ 'color': themas?.corSecundaria }}>{dataNoticias.heading}</h3>
+        <p className='text-[17px] mb-5'>{dataNoticias.subheading}</p>
 
-        <img src="" alt="" />
+        <img className='w-[100%]' src={dataNoticias.cover_image} alt={dataNoticias.heading} />
 
         <div dangerouslySetInnerHTML={{ __html: dataNoticias.content }}></div>
 
