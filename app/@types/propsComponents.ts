@@ -46,4 +46,5 @@ export interface CardNoticiasProps {
   title: string;
   description: string;
   typeNew: number;
+  friendly_url: string;
 }
