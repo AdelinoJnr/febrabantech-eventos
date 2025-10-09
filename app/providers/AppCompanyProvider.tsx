@@ -1,39 +1,31 @@
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
 import { appConfig } from "@/services/event-extension.service";
-import type { IDataHeader, IAppConfig, INavbar, IDataFooter, IDataPatrocinadores } from "@/@types/appConfig";
+import type { IDataHeader, IAppConfig, INavbar, IDataFooter, IDataPatrocinadores, IDataEvent, IAddress } from "@/@types/appConfig";
 import type { IThemas } from "@/@types/themas";
 import type { IAppCompanyContext, Language, Theme } from "@/@types/appCompanyContext";
 import { environment } from "@/environments/environment";
 import { orderNavBar } from "@/utils/orderNavBar";
 
 const AppCompanyContext = createContext<IAppCompanyContext>({
-  eventId: '',
-  themas: null,
-  dataHeader: null,
   loading: true,
   lang: 'br',
-  navbar: [],
   themeMode: 'dark',
   toggleTheme: () => {},
   setLang: () => {},
-  dataFooter: null,
+  dataEvent: null,
 });
 
 export default function AppCompanyProvider({ children }: { children: React.ReactNode }) {
-  const [eventId, setEventId] = useState('');
-  const [themas, setThemas] = useState<IThemas | null>(null);
-  const [navbar, setNavbar] = useState<INavbar[] | []>([]);
-  const [dataHeader, setDataHeader] = useState<IDataHeader | null>(null);
-  const [dataFooter, setDataFooter] = useState<IDataFooter | null>(null);
   const [lang, setLang] = useState<Language>("br");
   const [themeMode, setThemeMode] = useState<Theme>("dark");
   const [loading, setLoading] = useState(true);
+
+  const [dataEvent, setDataEvent] = useState<IDataEvent | null>(null);
 
   useEffect(() => {
     const fetchAppCompany = async () => {
       try {
         const result = await appConfig(environment.FRIENDLY_URL_EVENT);
-        setEventId(result.id);
         formatData(result);
       } catch (err) {
         console.error("Erro ao buscar app-company:", err);
@@ -56,7 +48,8 @@ export default function AppCompanyProvider({ children }: { children: React.React
 
   const formatData = (data: IAppConfig | null) => {
     if (data) {
-      const dataThemas: IThemas = {
+      // console.log(data);
+      const themas: IThemas = {
         corPrincipal: data?.main_color || "#000",
         corSecundaria: data?.secondary_color || "#fff",
         corFundo: data?.background_color || "#f0f0f0",
@@ -97,37 +90,43 @@ export default function AppCompanyProvider({ children }: { children: React.React
         emailImprensa: data?.emailImprensa,
       };
 
+      const address: IAddress = {
+        city: data?.city,
+        city_state: data.city_state,
+        country: data.country,
+        logradouro: data.logradouro,
+        number: data.number,
+      }
+
       const menu: INavbar[] = orderNavBar(Object.values(data?.menu));
 
-      setNavbar(menu);
-      setDataHeader(header);
-      setDataFooter(footer);
-      setThemas(dataThemas);
+      const dataEvent: IDataEvent = { 
+        eventId: data.id,
+        themas,
+        menu,
+        header,
+        footer,
+        address
+      }
+
+      setDataEvent(dataEvent);
     }
   }
 
   const contextValue = useMemo(() => ({
-    eventId,
-    themas,
-    dataHeader,
+    dataEvent,
     loading,
     lang,
-    navbar,
     setLang,
     themeMode,
     toggleTheme,
-    dataFooter,
   }), [
-    eventId,
-    themas,
-    dataHeader,
+    dataEvent,
     loading,
     lang,
-    navbar,
     setLang,
     themeMode,
     toggleTheme,
-    dataFooter,
   ]);
 
   return (

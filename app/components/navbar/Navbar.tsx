@@ -8,17 +8,18 @@ import type { INavbar } from '@/@types/appConfig';
 import styles from "./navbar.module.scss";
 
 export default function Navbar() {
-  const { themas, navbar, loading } = useAppCompany();
+  const { dataEvent, loading } = useAppCompany();
+  const { themas, menu } = dataEvent || {};
   const { translate } = useTranslation();
   const navigate = useNavigate();
 
-  if (loading || !navbar) {
+  if (loading || !menu) {
     return <OverlayLoading />;
   }
 
   return (
     <nav className={styles.navbar} style={{ backgroundColor: themas?.corMenu }}>
-      {navbar && navbar.map((item: INavbar, index: number) => (
+      {menu && menu.map((item: INavbar, index: number) => (
           <div
             key={index}
             onClick={() => navigate(`/${(item.viewValue).toLowerCase()}`)}

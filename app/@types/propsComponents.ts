@@ -40,3 +40,10 @@ export interface CardDicasProps {
   image_url: string;
   content: string;
 }
+
+export interface CardNoticiasProps {
+  img: string;
+  title: string;
+  description: string;
+  typeNew: number;
+}

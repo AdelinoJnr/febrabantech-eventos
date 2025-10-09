@@ -5,7 +5,8 @@ import { IoCloseCircleOutline } from "react-icons/io5";
 import { Link } from "react-router";
 
 export default function ModalBase({ isOpen, onClose, title, content, button, isHtml, img }: ModalBaseProps) {
-  const { themas } = useAppCompany();
+  const { dataEvent } = useAppCompany();
+  const { themas } = dataEvent || {};
 
   if (!isOpen) return null;
 

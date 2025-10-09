@@ -8,7 +8,8 @@ import { CardPalestrantesProps } from '@/@types/propsComponents';
 
 export default function CardPalestrantes({ id, image_url, speaker_name, pseudonym, mini_bio, mini_bio_en, handleClick }: CardPalestrantesProps) {
   const { translate } = useTranslation();
-  const { themas } = useAppCompany();
+  const { dataEvent } = useAppCompany();
+  const { themas } = dataEvent || {};
 
   return (
     <div className={styles.cardPalestrantes} onClick={() => handleClick(id)}>

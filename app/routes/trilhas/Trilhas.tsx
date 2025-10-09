@@ -23,7 +23,8 @@ export default function Trilhas() {
   const [loading, setLoading] = useState(true);
   const { viewValue, seeEnglishValue } = useNavbarTitle("trilhas");
   const { translate } = useTranslation();
-  const { themas, eventId } = useAppCompany();
+  const { dataEvent } = useAppCompany();
+  const { themas, eventId } = dataEvent || {};
   const { cache, setCache } = useCache();
 
   useEffect(() => {

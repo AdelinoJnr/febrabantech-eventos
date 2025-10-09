@@ -1,5 +1,13 @@
 export interface IGetPageDicas {
   color_banner_tip: string;
+  img_banner_map_tip: string;
+  img_banner_tip: string;
+  link_google_map_tip: string;
+  tips_button_color: string;
+  tips_button_text_color: string;
+  title_banner_tip: string;
+  waze_lat: string;
+  waze_lon: string;
   dicas: Dicas[];
 }
 

@@ -9,7 +9,8 @@ import { translationArray } from "@/utils/translationArray";
 
 export default function CardIngressos({ includes, includes_en, title_ticket_dy, title_ticket_dy_en, value_ticket_dy }: CardIngressosProps) {
   const { translate } = useTranslation();
-  const { themas } = useAppCompany();
+  const { dataEvent } = useAppCompany();
+  const { themas } = dataEvent || {};
   const { translateArray } = translationArray();
 
   return (

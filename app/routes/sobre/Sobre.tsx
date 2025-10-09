@@ -17,11 +17,12 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export default function Sobre() {
+  const { dataEvent } = useAppCompany();
+  const { eventId, themas } = dataEvent || {};
   const [dataSobre, setDataSobre] = useState<IGetPageSobre>();
   const [loading, setLoading] = useState(true);
   const { viewValue, seeEnglishValue } = useNavbarTitle("sobre");
   const { translate } = useTranslation();
-  const { themas, eventId } = useAppCompany();
   const { cache, setCache } = useCache();
 
   useEffect(() => {

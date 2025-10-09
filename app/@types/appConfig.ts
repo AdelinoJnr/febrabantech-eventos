@@ -1,3 +1,5 @@
+import { IThemas } from "./themas";
+
 export interface IAppConfig {
   id: string;
   heading: string;
@@ -44,6 +46,10 @@ export interface IAppConfig {
   background_img_mobile: string;
   background_img_tablet: string;
   sponsor_image_one: string;
+  city_state: string;
+  country: string;
+  logradouro: string;
+  number: string;
 }
 
 export interface IDataHeader {
@@ -87,4 +93,21 @@ export interface IDataPatrocinadores {
   background_img_mobile: string;
   background_img_tablet: string;
   sponsor_image_one: string;
+}
+
+export interface IAddress {
+  city: string;
+  city_state: string;
+  country: string;
+  logradouro: string;
+  number: string;
+}
+
+export interface IDataEvent {
+  eventId: string;
+  themas: IThemas;
+  menu: INavbar[];
+  header: IDataHeader;
+  footer: IDataFooter;
+  address: IAddress;
 }

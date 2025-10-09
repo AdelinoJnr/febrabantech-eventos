@@ -22,7 +22,8 @@ export default function Patrocinadores() {
   const [loading, setLoading] = useState(true);
   const { viewValue, seeEnglishValue } = useNavbarTitle("palestrante");
   const { translate } = useTranslation();
-  const { themas, eventId } = useAppCompany();
+  const { dataEvent } = useAppCompany();
+  const { themas, eventId } = dataEvent || {};
 
   useEffect(() => {
     if (!eventId) return;

@@ -21,7 +21,8 @@ const iconMap = {
 
 export default function CardDicas({ icon, titleCard, image_url, content }: CardDicasProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const { themas } = useAppCompany();
+  const { dataEvent } = useAppCompany();
+  const { themas } = dataEvent || {};
 
   const IconComponent = iconMap[icon];
 

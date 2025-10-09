@@ -23,7 +23,8 @@ export default function Ingressos() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [loading, setLoading] = useState(true);
   const { translate } = useTranslation();
-  const { themas, eventId } = useAppCompany();
+  const { dataEvent } = useAppCompany();
+  const { themas, eventId } = dataEvent || {};
   const { cache, setCache } = useCache();
 
   useEffect(() => {

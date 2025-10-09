@@ -6,7 +6,8 @@ import { getPagePatrocinadores } from '@/services/event-extension.service';
 
 export default function BannerPatrocinadores() {
   const [dataPatrocinadores, setDataPatrocinadores] = useState<IGetPagePatrocinadores>();
-  const { eventId, themas } = useAppCompany();
+  const { dataEvent } = useAppCompany();
+  const { eventId, themas } = dataEvent || {};
   const { cache, setCache } = useCache();
 
   useEffect(() => {

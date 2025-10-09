@@ -1,9 +1,10 @@
 import { useAppCompany } from "@/providers/AppCompanyProvider";
 
 export function useNavbarTitle(value: string) {
-  const { navbar } = useAppCompany();
+  const { dataEvent } = useAppCompany();
+  const { menu } = dataEvent || {};
 
-  const item = navbar?.find((item) => item.value.toLowerCase() === value.toLowerCase());
+  const item = menu?.find((item) => item.value.toLowerCase() === value.toLowerCase());
 
   return {
     viewValue: item?.viewValue || "",

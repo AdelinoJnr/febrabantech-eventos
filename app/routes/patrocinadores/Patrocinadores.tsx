@@ -20,7 +20,8 @@ export default function Patrocinadores() {
   const [loading, setLoading] = useState(true);
   const { viewValue, seeEnglishValue } = useNavbarTitle("patrocinadores");
   const { translate } = useTranslation();
-  const { eventId, themas } = useAppCompany();
+  const { dataEvent } = useAppCompany();
+  const { eventId, themas } = dataEvent || {};
   const { cache, setCache } = useCache();
 
   useEffect(() => {

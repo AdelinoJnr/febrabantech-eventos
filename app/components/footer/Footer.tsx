@@ -7,7 +7,8 @@ import { Link } from "react-router-dom";
 import styles from '@/components/footer/footer.module.scss';
 
 export default function Footer() {
-  const { dataFooter } = useAppCompany();
+  const { dataEvent } = useAppCompany();
+  const { footer } = dataEvent || {};
 
   return (
     <footer>
@@ -87,7 +88,7 @@ export default function Footer() {
               Fale com a <strong>organização</strong>
             </Link>
 
-            <a href={`mailto:${dataFooter?.emailImprensa}`}>
+            <a href={`mailto:${footer?.emailImprensa}`}>
               Imprensa
             </a>
 

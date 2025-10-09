@@ -17,7 +17,8 @@ export default function ModalPalestrantes({
   agenda,
 }: ModalPalestrantesProps) {
   const { translate } = useTranslation();
-  const { themas } = useAppCompany();
+  const { dataEvent } = useAppCompany();
+  const { themas } = dataEvent || {};
 
   const diasAgenda = Array.from(
     new Set(

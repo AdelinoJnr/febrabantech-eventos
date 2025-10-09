@@ -1,5 +1,6 @@
 import { IGetPageDicas } from "@/@types/getPageDicas";
 import { IGetPageIngressos } from "@/@types/getPageIngressos";
+import { IGetPageNoticias } from "@/@types/getPageNoticias";
 import { IGetPagePatrocinadores } from "@/@types/getPagePatrocinadores";
 import { IGetPageSobre } from "@/@types/getPageSobre";
 import { IGetPageTrilhas } from "@/@types/getPageTrilhas";
@@ -11,6 +12,7 @@ interface CacheState {
   patrocinadores?: IGetPagePatrocinadores;
   ingressos?: IGetPageIngressos;
   dicas?: IGetPageDicas;
+  noticias?: IGetPageNoticias[];
 }
 
 interface CacheContextType {

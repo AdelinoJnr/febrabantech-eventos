@@ -12,6 +12,9 @@ export default [
   route("palestrante", "routes/palestrantes/Palestrantes.tsx"),
   route("patrocinadores", "routes/patrocinadores/Patrocinadores.tsx"),
   route("inscricao", "routes/ingressos/Ingressos.tsx"),
+  route("notícias", "routes/noticias/listaNoticias/ListaNoticias.tsx"),
+  // route("noticias/:friendly_url", "routes/noticias/detalheNoticia/DetalheNoticia.tsx"),
+  // route("agenda", "routes/agenda/Agenda.tsx"),
 
   // route("*", "routes/notFound.tsx"),
 ] satisfies RouteConfig;
