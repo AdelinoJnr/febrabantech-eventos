@@ -8,6 +8,7 @@ import type { IGetPageSobre } from '@/@types/getPageSobre';
 import { IGetPageTrilhas } from '@/@types/getPageTrilhas';
 import { IGetPageDicas } from '@/@types/getPageDicas';
 import { IGetPageNoticias } from '@/@types/getPageNoticias';
+import { IGetPageVideos } from '@/@types/getPageVideos';
 
 export const appConfig = async (id: string): Promise<IAppConfig> => {
   const token = localStorage.getItem("token");
@@ -91,6 +92,17 @@ export const getPageNoticias = async (event_id: string): Promise<IGetPageNoticia
 
   const response = await api.get<IGetPageNoticias[]>(
     `/pages-events/pc/getPageNoticias?event_id=${event_id}`,
+    { headers: token ? { Authorization: token } : {}, }
+  );
+
+  return response.data;
+}
+
+export const getPageVideos = async (event_id: string): Promise<IGetPageVideos[]> => {
+  const token = localStorage.getItem("token");
+
+  const response = await api.get<IGetPageVideos[]>(
+    `/pages-events/pc/getPageVideos?event_id=${event_id}`,
     { headers: token ? { Authorization: token } : {}, }
   );
 

@@ -4,6 +4,7 @@ import { IGetPageNoticias } from "@/@types/getPageNoticias";
 import { IGetPagePatrocinadores } from "@/@types/getPagePatrocinadores";
 import { IGetPageSobre } from "@/@types/getPageSobre";
 import { IGetPageTrilhas } from "@/@types/getPageTrilhas";
+import { IGetPageVideos } from "@/@types/getPageVideos";
 import { createContext, ReactNode, useContext, useState } from "react";
 
 interface CacheState {
@@ -13,6 +14,7 @@ interface CacheState {
   ingressos?: IGetPageIngressos;
   dicas?: IGetPageDicas;
   noticias?: IGetPageNoticias[];
+  videos?: IGetPageVideos[];
 }
 
 interface CacheContextType {

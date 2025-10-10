@@ -10,13 +10,17 @@ import {
 import type { Route } from "./+types/root";
 
 import AppCompanyProvider from "@/providers/AppCompanyProvider"
+import { CacheProvider } from "@/providers/CacheProvider";
+import { AuthProvider } from "@/providers/AuthProvider";
+import { LoginModalProvider } from "@/providers/LoginModalProvider";
 
 import Header from "@/components/header/Header";
 import Navbar from "@/components/navbar/Navbar";
 import Footer from "@/components/footer/Footer";
+import Login from "@/components/login";
 
 import "@/styles/global.css";
-import { CacheProvider } from "./providers/CacheProvider";
+
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -52,16 +56,21 @@ export function Layout({ children }: { children: React.ReactNode }) {
 export default function App() {
   return (
     <>
-      <AppCompanyProvider>
-        <CacheProvider>
-          {/* <Header /> */}
-          <Navbar />
-          <main className="min-h-[70vh]">
-            <Outlet />
-          </main>
-          <Footer />
-        </CacheProvider>
-      </AppCompanyProvider>
+      <AuthProvider>
+        <AppCompanyProvider>
+          <CacheProvider>
+            <LoginModalProvider>
+              {/* <Header /> */}
+              <Navbar />
+              <main className="min-h-[70vh]">
+                <Outlet />
+              </main>
+              <Footer />
+              <Login />
+            </LoginModalProvider>
+          </CacheProvider>
+        </AppCompanyProvider>
+      </AuthProvider>
     </>
   );
 }

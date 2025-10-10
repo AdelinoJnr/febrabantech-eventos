@@ -15,6 +15,7 @@ export default [
   route("notícias/:friendly_url", "routes/noticias/detalheNoticias/DetalheNoticias.tsx"),
   route("notícias", "routes/noticias/listaNoticias/ListaNoticias.tsx"),
   // route("agenda", "routes/agenda/Agenda.tsx"),
+  route("videos", "routes/videos/Videos.tsx"),
 
   // route("*", "routes/notFound.tsx"),
 ] satisfies RouteConfig;
